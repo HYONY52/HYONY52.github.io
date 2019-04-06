@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "HYONY'S BLOG"
+title                    : "NAHYEON'S BLOG"
 title_separator          : "-"
 name                     : "Nahyeon Kim"
 description              : "An amazing website."
-url                      : "https://HYONY52.github.io"
+url                      : "https://NHKIM.github.io"
 baseurl                  : ""
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "https://v-phinf.pstatic.net/20181010_180/1539156268990Ptwzg_JPEG/upload_181010_IU_BBIBBI_MV_Final_Thumbnail.jpg"
@@ -106,10 +106,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Nahyeon KIM"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
+  bio              : "Yonsei Business Administration"
+  location         : "Seoul, Korea"
   email            :
   links:
     - label: "Email"
