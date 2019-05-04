@@ -1,0 +1,68 @@
+title: "AI_BIZ RNN"
+date: 2017-10-20 08:26:28 -0400
+categories: jekyll update
+
+import numpy as np
+import sys
+import matplotlib.pyplot as plt
+if "../" not in sys.path:
+  sys.path.append("../")
+
+def value_iteration_for_gamblers(p_h, theta=0.0001, discount_factor=1.0):
+    #discount factor 는 보다 효율적으로 값을 찾기 위해 오래 걸릴 경우 discount factor 부여 
+    """
+    Args:
+        p_h: Probability of the coin coming up heads
+    """
+    # The reward is zero on all transitions except those on which the gambler reaches his goal,
+    # when it is +1.
+    rewards = np.zeros(101) # 강화학습을 위한 rewards
+    rewards[100] = 1 # 종료 
+
+    # We introduce two dummy states corresponding to termination with capital of 0 and 100
+    V = np.zeros(101)
+
+    def one_step_lookahead(s, V, rewards):
+        """
+        Helper function to calculate the value for all action in a given state.
+
+        Args:
+            s: The gambler’s capital. Integer.
+            V: The vector that contains values at each state.
+            rewards: The reward vector.
+
+        Returns:
+            A vector containing the expected value of each action.
+            Its length equals to the number of actions.
+        """
+        A = np.zeros(101)
+        stakes = range(1, min(s, 100 - s) + 1)  # Your minimum bet is 1, maximum bet is min(s, 100-s).
+        # s는 현재 상태, 즉 내가 현재 돈을 얼마나 가지고 있는 지에 대해서 
+        # s 상태일때 배팅할 수 있는 금액인 a의 리스트를 만들기 위해  stakes라는 변수를 생성함 
+        for a in stakes: # a 는 s의 상태에서 선택할 수 있는 action 을 의미한다.   
+            A[a] = p_h * (rewards[s + a] + V[s + a] * discount_factor) + (1 - p_h) * (
+                        rewards[s - a] + V[s - a] * discount_factor)
+        return A # 각 action 이 행해진 것에 대한 결과를 계산 / discounted sum of reawards 
+
+    while True: # one_Step_lookahead 조건을 하단의 조건을 만족할 때까지 계산한다. 
+        delta = 0
+        for s in range(1, 100): # 도박꾼이 가지고 있는 재산인 s가 1부터 100일 때를 모두 조사한다. 
+            A = one_step_lookahead(s, V, rewards) #s는 현재 가지고 있는 재산
+            best_action_value = np.max(A) 
+            #각 a, 즉 얼마를 걸었을 때 해당 s 에서 return이 나오는 지 value가 도출되게 된다. 
+            #best_action_value 는 s인 상태에서 가장 높게 달성하는 expected value 
+            delta = max(delta, np.abs(best_action_value - V[s])) #np.abs란 절대값을 구하는 함수 
+            # V[s]는 재산을 s 만큼 가지고 있을 때 얼마나 많은 return 을 얻게 될지 예상한 값 
+            # 이번 시행에서 도출된 best_action_value가 이전 시행인 V[s]와의 차이가 지난 회차 보다 클 때 delta 업데이트 
+            V[s] = best_action_value #value s 업데이트 
+        if delta < theta: #while문 종료 
+            break
+
+    # Create a deterministic policy using the optimal value function
+    policy = np.zeros(100) #규칙을 생성하기 위해 우선 dummy variable 생성
+    for s in range(1, 100): # 재산을 1부터 100까지로 할때 
+        A = one_step_lookahead(s, V, rewards) #재산이 s 일때 discounted sum of rewards 를 구하고  
+        best_action = np.argmax(A) #argmax는 색인 위치를 구하는 함수 
+        # A를 최대로 만드는 action을 파악한다.  
+        policy[s] = best_action #best action을 policy 로 기록한다.
+    return policy, V
