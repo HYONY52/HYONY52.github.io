@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -20,11 +20,11 @@ title                    : "NAHYEON'S BLOG"
 title_separator          : "-"
 name                     : "Nahyeon Kim"
 description              : "An amazing website."
-url                      : "https://thisishyony.github.io"
+url                      : "https://hyony52.github.io"
 baseurl                  : ""
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "https://v-phinf.pstatic.net/20181010_180/1539156268990Ptwzg_JPEG/upload_181010_IU_BBIBBI_MV_Final_Thumbnail.jpg"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : "https://mblogthumb-phinf.pstatic.net/20160512_88/minihopi_14630649123051ukHi_JPEG/5-05.jpg?type=w2"
+logo                     : "https://mblogthumb-phinf.pstatic.net/20160512_16/minihopi_1463064912511OEh8p_JPEG/5-06.jpg?type=w2"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
