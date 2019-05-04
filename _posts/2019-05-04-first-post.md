@@ -1,6 +1,6 @@
 
 ---
-title: "AI BIZ deep Learning "
+title: "AI BIZ image classification "
 date: 2017-10-20 08:26:28 -0400
 categories: jekyll update
 ---
