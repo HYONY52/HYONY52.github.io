@@ -1,6 +1,8 @@
+---
 title: "AI_BIZ RNN"
 date: 2017-10-20 08:26:28 -0400
 categories: jekyll update
+---
 
 import numpy as np
 import sys
