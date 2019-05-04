@@ -11,8 +11,6 @@ https://www.kaggle.com/puneet6060/intel-image-classification
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
-# Input data files are available in the "../input/" directory.
-# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
 from keras.preprocessing.image import ImageDataGenerator, load_img
 from keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
